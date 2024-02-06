@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "graphql.vscode-graphql",
+    "graphql.vscode-graphql-syntax",
+    "apollographql.vscode-apollo",
+    "esbenp.prettier-vscode",
+    "github.copilot",
+    "eamodio.gitlens",
+    "ms-vsliveshare.vsliveshare",
+    "gruntfuggly.todo-tree"
+  ]
+}

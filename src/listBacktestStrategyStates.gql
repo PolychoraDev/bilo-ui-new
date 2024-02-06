@@ -1,0 +1,57 @@
+query listBacktestStrategyState(
+  $symbol: String!
+  $interval: String!
+  $tradingStrategyName: String!
+  $limit: Int!
+  $offset: Int
+) {
+  defaultdb_BacktestStrategyState(
+    where: {
+      symbol: { _eq: $symbol }
+      interval: { _eq: $interval }
+      tradingStrategyName: { _eq: $tradingStrategyName }
+    }
+    limit: $limit
+    offset: $offset
+  ) {
+    activeOrderId
+    createdAt
+    defaultdb_BacktestIndicators {
+      createdAt
+      id
+      strategyStateId
+      subType
+      type
+      updatedAt
+      value
+    }
+    defaultdb_BacktestOrder {
+      createdAt
+      date
+      exchangeOrderId
+      interval
+      id
+      openPositionPrice
+      orderType
+      price
+      profitRate
+      side
+      stopLoss
+      stopOrderType
+      symbol
+      timestamp
+      tradingStrategyName
+      updatedAt
+    }
+    id
+    interval
+    isOrderActive
+    isPotentialOrderSignaled
+    potentialOrderSide
+    start
+    symbol
+    takeProfit
+    tradingStrategyName
+    updatedAt
+  }
+}
