@@ -7,6 +7,7 @@ import {
   HttpLink,
 } from "@apollo/client";
 import { Backtest } from "./Backtest";
+import { offsetLimitPagination } from "@apollo/client/utilities";
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -18,7 +19,15 @@ const createApolloClient = () => {
           "0lfebsntBTcXg3mnTYkGn7n0LBlRA7Y5VqpC7X6AVLnV3kMtqI9AbKlfeb02unzJ",
       },
     }),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            defaultdb_BacktestStrategyState: offsetLimitPagination(),
+          },
+        },
+      },
+    }),
   });
 };
 
